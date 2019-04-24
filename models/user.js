@@ -13,6 +13,7 @@ const user = mongoose.Schema({
         type: String,
     },
     posts: [],
+    subscriptions: [],
     biography: {
         type: String,
     }

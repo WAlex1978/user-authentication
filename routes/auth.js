@@ -31,4 +31,29 @@ app.post('/register', async (req, res) => {
     }
 });
 
+// User login endpoint
+app.post('/login', async (req, res) => {
+    try {
+        // Check if username exists in database
+        const search = await User.findOne({username: new RegExp(req.body.username, 'i')})
+        if (!search) {
+            throw new Error("Username does not exist");
+        }
+
+        // Verify password against hashed password
+        const match = await bcrypt.compare(req.body.password, search.password);
+        if (!match) {
+            throw new Error("Username and password pair does not match");
+        }
+
+        // Sign and distribute JSON Web Token
+        const token = await jwt.sign({username: req.body.username}, process.env.SECRET_PW);
+        res.send(token);
+    }
+    catch (err) {
+        res.status(400).send(err.toString());
+    }
+})
+
+
 module.exports = app;
