@@ -27,7 +27,7 @@ app.post('/register', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status(400).send(err.toString());
+        res.send({error: true, message: err.message.toString()});
     }
 });
 
@@ -48,10 +48,11 @@ app.post('/login', async (req, res) => {
 
         // Sign and distribute JSON Web Token
         const token = await jwt.sign({username: req.body.username}, process.env.SECRET_PW);
-        res.send(token);
+        res.send({token: token});
     }
     catch (err) {
-        res.status(400).send(err.toString());
+        console.log(err);
+        res.send({error: true, message: err.message.toString()});
     }
 })
 

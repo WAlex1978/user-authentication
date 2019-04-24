@@ -6,6 +6,8 @@ export const Text = styled.div`
     color: ${props => props.color ? props.color : "black"};
     margin: ${props => props.margin ? props.margin : null};
     margin-bottom: ${props => props.bottom ? props.bottom : null};
+    text-align: ${props => props.align ? props.align : null};
+    visibility: ${props => props.visibility ? props.visibility : "visible"};
 `
 export const Flex = styled.div`
     flex: 1;
