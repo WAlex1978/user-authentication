@@ -3,6 +3,18 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import { Flex } from '../styled-components';
+import styled from 'styled-components';
+import image from './login-background.jpg';
+
+const Background = styled.div`
+    background-image: url(${image});
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+`
 
 const Login = (props) => {
     if (props.token) {
@@ -11,7 +23,7 @@ const Login = (props) => {
 
     return (
         <Flex>
-            <div style={{flex: 1, backgroundColor: "rgb(254, 74, 86)"}}></div>
+            <Background />
             <LoginForm />
         </Flex>
     )
