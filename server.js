@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('./connection');
 
-const placeholder = require('./routes/placeholder');
+const authRouter = require('./routes/auth');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api/', placeholder);
+app.use('/api/auth/', authRouter);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('build'));

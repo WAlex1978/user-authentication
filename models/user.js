@@ -12,6 +12,10 @@ const user = mongoose.Schema({
     avatar: {
         type: String,
     },
+    posts: [],
+    biography: {
+        type: String,
+    }
 })
 
 module.exports = mongoose.model('user', user);
