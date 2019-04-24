@@ -43,7 +43,7 @@ app.post('/login', async (req, res) => {
         // Verify password against hashed password
         const match = await bcrypt.compare(req.body.password, search.password);
         if (!match) {
-            throw new Error("Username and password pair does not match");
+            throw new Error("Incorrect password");
         }
 
         // Sign and distribute JSON Web Token

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -49,10 +50,13 @@ const LoginForm = (props) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const res = await login(username, password);
-        console.log(res);
 
         if (res.data.error) {
             setError(res.data.message);
+        }
+
+        if (res.data.token) {
+            props.login(res.data.token);
         }
     }
 
@@ -81,8 +85,12 @@ const LoginForm = (props) => {
     )
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return { login: (token) => { dispatch({ type: "LOG_IN", token }) } }
+}
+
 LoginForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles) (LoginForm);
+export default withStyles (styles) (connect (null, mapDispatchToProps) (LoginForm));
