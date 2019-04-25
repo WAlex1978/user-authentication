@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -42,9 +41,10 @@ const styles = () => ({
     }
 });
 
-const LoginForm = (props) => {
+const RegisterForm = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [error, setError] = useState(null);
     const { classes } = props;
 
@@ -56,16 +56,14 @@ const LoginForm = (props) => {
         setPassword(e.target.value);
     }
 
+    const changePassword2 = (e) => {
+        setPassword2(e.target.value);
+    }
+
     const onSubmit = async (e) => {
         e.preventDefault();
-        const res = await login(username, password);
-
-        if (res.data.error) {
-            setError(res.data.message);
-        }
-
-        if (res.data.token) {
-            props.login(res.data.token);
+        if (password !== password2) {
+            setError("Passwords do not match");
         }
     }
 
@@ -73,20 +71,21 @@ const LoginForm = (props) => {
         <Base>
             <Wrapper>
                 <Flex direction="column" justify="center">
-                    <Text size="1.8rem" bottom="10px">Login</Text>
-                    <Text bottom="60px">Don't have an account? 
-                    <Link to="/register/" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Create a new account.</Link></Text>
+                    <Text size="1.8rem" bottom="10px">Register</Text>
+                    <Text bottom="60px">Already have an account? 
+                    <Link to="/login" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Sign in.</Link></Text>
                     
                     <form onSubmit={onSubmit}>
                         <Input placeholder="Username" fullWidth className={classes.input} value={username} onChange={changeUsername} />
                         <Input placeholder="Password" fullWidth type="password" className={classes.input} value={password} onChange={changePassword} />
+                        <Input placeholder="Repeat your Password" fullWidth type="password" className={classes.input} value={password2} onChange={changePassword2} />
                         
                         <Text size=".9rem" align="center" color="rgb(254, 44, 66)" visibility={error ? "visible" : "hidden"}>
                             {error ? error : "error"}
                         </Text>
 
                         <Button variant="contained" className={classes.button} type="submit">
-                            Login
+                            Create
                         </Button>
                     </form>
 
@@ -102,12 +101,8 @@ const LoginForm = (props) => {
     )
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return { login: (token) => { dispatch({ type: "LOG_IN", token }) } }
-}
-
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles) (connect (null, mapDispatchToProps) (LoginForm));
+export default withStyles (styles) (RegisterForm);
