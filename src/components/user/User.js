@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { getUser } from '../../services/user';
+import Avatar from './Avatar';
 
 class User extends Component {
     state = {
@@ -34,7 +35,7 @@ class User extends Component {
     render() { 
         return (
             <div>
-                User
+                {this.state.user ? <Avatar image={this.state.user.avatar} /> : null }
             </div>
         );
     }
