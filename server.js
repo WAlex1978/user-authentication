@@ -4,6 +4,7 @@ const cors = require('cors');
 require('./connection');
 
 const authRouter = require('./routes/auth');
+const userRouter = require('./routes/user');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/api/auth/', authRouter);
+app.use('/api/user', userRouter);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('build'));
