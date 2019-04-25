@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -60,12 +60,19 @@ const LoginForm = (props) => {
         e.preventDefault();
         const res = await login(username, password);
 
-        if (res.data.error) {
-            setError(res.data.message);
+        if (!res) {
+            setError("Server error");
+            return;
         }
 
-        if (res.data.token) {
+        if (res.data && res.data.error) {
+            setError(res.data.message);
+            return;
+        }
+
+        if (res.data && res.data.token) {
             props.login(res.data.token);
+            props.history.push('/');
         }
     }
 
@@ -110,4 +117,4 @@ LoginForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles (styles) (connect (null, mapDispatchToProps) (LoginForm));
+export default withRouter (withStyles (styles) (connect (null, mapDispatchToProps) (LoginForm)));

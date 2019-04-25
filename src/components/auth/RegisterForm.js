@@ -6,7 +6,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
 import { Flex, Text, Wrapper } from '../styled-components';
-import { login } from '../../services/auth';
+import { register } from '../../services/auth';
 
 const Base = styled.div`
     flex: 1;
@@ -64,6 +64,26 @@ const RegisterForm = (props) => {
         e.preventDefault();
         if (password !== password2) {
             setError("Passwords do not match");
+            return;
+        }
+        
+        const res = await register(username, password);
+
+        if (!res) {
+            setError("Server error");
+            return;
+        }
+
+        if (res.data && res.data.error) {
+            setError(res.data.message);
+            return;
+        }
+
+        if (res.data && res.data._id) {
+            setError("User successfully registered");
+            setUsername('');
+            setPassword('');
+            setPassword2('');
         }
     }
 
@@ -78,7 +98,7 @@ const RegisterForm = (props) => {
                     <form onSubmit={onSubmit}>
                         <Input placeholder="Username" fullWidth className={classes.input} value={username} onChange={changeUsername} />
                         <Input placeholder="Password" fullWidth type="password" className={classes.input} value={password} onChange={changePassword} />
-                        <Input placeholder="Repeat your Password" fullWidth type="password" className={classes.input} value={password2} onChange={changePassword2} />
+                        <Input placeholder="Retype Password" fullWidth type="password" className={classes.input} value={password2} onChange={changePassword2} />
                         
                         <Text size=".9rem" align="center" color="rgb(254, 44, 66)" visibility={error ? "visible" : "hidden"}>
                             {error ? error : "error"}

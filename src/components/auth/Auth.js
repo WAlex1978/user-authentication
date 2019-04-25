@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LoginForm from './LoginForm';
@@ -16,18 +16,21 @@ const Background = styled.div`
     justify-content: center;
     flex: 1;
 `
-
-const Auth = (props) => {
-    if (props.token) {
-        props.history.push('/');
+class Auth extends Component {
+    componentWillMount = () => {
+        if (this.props.token) {
+            this.props.history.push('/');
+        }
     }
 
-    return (
-        <Flex>
-            <Background />
-            {props.history.location.pathname === '/login' ? <LoginForm /> : <RegisterForm />}
-        </Flex>
-    )
+    render() {
+        return (
+            <Flex>
+                <Background />
+                {this.props.history.location.pathname === '/login' ? <LoginForm /> : <RegisterForm />}
+            </Flex>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {
