@@ -31,6 +31,15 @@ const styles = () => ({
             backgroundColor: "rgb(254, 44, 66)",
         }
     },
+    back: {
+        color: "rgb(254, 74, 86)",
+        marginTop: "5px",
+        marginLeft: "auto",
+        width: "50%",
+        '&:hover': {
+            backgroundColor: "white",
+        }
+    }
 });
 
 const LoginForm = (props) => {
@@ -67,6 +76,7 @@ const LoginForm = (props) => {
                     <Text size="1.8rem" bottom="10px">Login</Text>
                     <Text bottom="60px">Don't have an account? 
                     <Link to="/register/" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Create a new account.</Link></Text>
+                    
                     <form onSubmit={onSubmit}>
                         <Input placeholder="Username" fullWidth className={classes.input} value={username} onChange={changeUsername} />
                         <Input placeholder="Password" fullWidth type="password" className={classes.input} value={password} onChange={changePassword} />
@@ -79,6 +89,13 @@ const LoginForm = (props) => {
                             Login
                         </Button>
                     </form>
+
+                    <Button className={classes.back} type="button">
+                        <Link to="/" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}>
+                            Back
+                        </Link>
+                    </Button>
+
                 </Flex>
             </Wrapper>
         </Base>
