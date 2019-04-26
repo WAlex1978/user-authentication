@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import LoginForm from './LoginForm';
@@ -19,15 +19,19 @@ const Background = styled.div`
 class Auth extends Component {
     componentWillMount = () => {
         if (this.props.token) {
-            this.props.history.push('/');
+            this.props.history.goBack();
         }
     }
 
     render() {
         return (
             <Flex>
-                <Background />
-                {this.props.history.location.pathname === '/login' ? <LoginForm /> : <RegisterForm />}
+                {!this.props.token ? 
+                    <Fragment>
+                        <Background />
+                        {this.props.history.location.pathname === '/login' ? <LoginForm /> : <RegisterForm />}
+                    </Fragment> : 
+                null }
             </Flex>
         )
     }

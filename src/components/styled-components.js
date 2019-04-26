@@ -6,6 +6,7 @@ export const Text = styled.div`
     color: ${props => props.color ? props.color : "black"};
     margin: ${props => props.margin ? props.margin : null};
     margin-bottom: ${props => props.bottom ? props.bottom : null};
+    margin-top: ${props => props.top ? props.top : null};
     text-align: ${props => props.align ? props.align : null};
     visibility: ${props => props.visibility ? props.visibility : "visible"};
 `
@@ -22,5 +23,6 @@ export const Flex = styled.div`
 export const Wrapper = styled.div`
     width: ${props => props.width ? props.width : "70%"};
     margin: auto;
+    padding-top: ${props => props.top ? props.top : null};
     height: 100%;
 `

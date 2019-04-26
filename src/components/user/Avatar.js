@@ -1,19 +1,27 @@
 import React from 'react';
-import styled from 'styled-components';
-import image from './default-avatar.png';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Image from './default-avatar.png';
 
-const Image = styled.div`
-    background-image: url(${props => props.image});
-    background-size: contain;
-    background-position: center;
-    height: 220px;
-    width: 220px;
-`
+const styles = {
+    Avatar: {
+        margin: 10,
+        width: 200,
+        height: 200,
+    },
+};
 
-const Avatar = (props) => {
+const ImageAvatar = (props) => {
+    const { classes } = props;
+
     return (
-        <Image image={props.image ? props.image : image} />
-    )
+        <Avatar src={props.image ? props.image : Image} className={classes.Avatar} />
+    );
 }
 
-export default Avatar;
+ImageAvatar.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles (styles) (ImageAvatar);
