@@ -10,7 +10,7 @@ app.post('/register', async (req, res) => {
     try {
         // Check if username already exists in database
         // If user exists, throw error
-        const search = await User.findOne({username: new RegExp(req.body.username, 'i')});
+        const search = await User.findOne({username: req.body.username.toLowerCase()});
         if (search) {
             throw new Error("Username already exists");
         }
@@ -18,7 +18,7 @@ app.post('/register', async (req, res) => {
         // If user does not exist, hash password and save to database
         const hash = await bcrypt.hash(req.body.password, saltRounds);
         const user = new User({
-            username: req.body.username,
+            username: req.body.username.toLowerCase(),
             password: hash,
         });
 
@@ -35,7 +35,7 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
     try {
         // Check if username exists in database
-        const search = await User.findOne({username: new RegExp(req.body.username, 'i')})
+        const search = await User.findOne({username: req.body.username.toLowerCase()})
         if (!search) {
             throw new Error("Username does not exist");
         }
@@ -47,7 +47,7 @@ app.post('/login', async (req, res) => {
         }
 
         // Sign and distribute JSON Web Token
-        const token = await jwt.sign({username: req.body.username}, process.env.SECRET_PW);
+        const token = await jwt.sign({username: req.body.username.toLowerCase()}, process.env.SECRET_PW);
         res.send({token: token});
     }
     catch (err) {

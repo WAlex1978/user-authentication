@@ -5,7 +5,7 @@ const User = require('../models/user');
 app.get('/', async (req, res) => {
     try {
         // Search for user by username
-        const search = await User.findOne({username: new RegExp(req.query.username, 'i')}, {password: 0});
+        const search = await User.findOne({username: req.query.username.toLowerCase()}, {password: 0});
 
         // If null results from search
         if (!search) {
