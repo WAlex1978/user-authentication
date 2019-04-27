@@ -17,9 +17,6 @@ class User extends Component {
     }
 
     fetchUser = async () => {
-        console.log(this.props.history);
-        if (this.props.history.location.pathname)
-            console.log(this.props.history.location.pathname.slice(6).replace('/',''))
         const res = await getUser(this.props.history.location.pathname.slice(6).replace('/',''));
         
         if (!res) {
