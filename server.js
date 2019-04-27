@@ -18,6 +18,7 @@ app.use('/api/user', userRouter);
 
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('build'));
+	app.use('*', express.static('build'));
 }
 
 app.get('*', (req, res) => {
