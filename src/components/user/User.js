@@ -17,7 +17,7 @@ class User extends Component {
     }
 
     fetchUser = async () => {
-        const res = await getUser(this.props.history.location.pathname.slice(6));
+        const res = await getUser(this.props.history.location.pathname.slice(6).replace('/',''));
         
         if (!res) {
             this.setState({error: "Server error"});

@@ -93,7 +93,7 @@ const RegisterForm = (props) => {
                 <Flex direction="column" justify="center">
                     <Text size="1.8rem" bottom="10px">Register</Text>
                     <Text bottom="60px">Already have an account? 
-                    <Link to="/login" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Log in.</Link></Text>
+                    <Link to="/login/" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Log in.</Link></Text>
                     
                     <form onSubmit={onSubmit}>
                         <Input placeholder="Username" fullWidth className={classes.input} value={username} onChange={changeUsername} />

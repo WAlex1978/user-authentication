@@ -82,7 +82,7 @@ const LoginForm = (props) => {
                 <Flex direction="column" justify="center">
                     <Text size="1.8rem" bottom="10px">Login</Text>
                     <Text bottom="60px">Don't have an account? 
-                    <Link to="/register" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Create a new account.</Link></Text>
+                    <Link to="/register/" style={{textDecoration: "none", color: "rgb(254, 44, 66)"}}> Create a new account.</Link></Text>
                     
                     <form onSubmit={onSubmit}>
                         <Input placeholder="Username" fullWidth className={classes.input} value={username} onChange={changeUsername} />
