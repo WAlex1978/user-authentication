@@ -15,6 +15,10 @@ const Background = styled.div`
     flex-direction: column;
     justify-content: center;
     flex: 1;
+
+    @media (max-width: 768px) {
+        display: none;
+    }
 `
 class Auth extends Component {
     componentWillMount = () => {
