@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Wrapper, Flex, Text } from '../styled-components';
-
+import ProfilePicture from './ProfilePicture';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
+    Content: {
+        flex: 1,
+        margin: "30px 0 0 20px",
+    },
     List: {
         width: "20%",
+        marginTop: "30px",
     },
     classList: {
         "&:hover": {
@@ -50,7 +55,9 @@ class Options extends Component {
                             <Text color="inherit">Following</Text>
                         </ListItem>
                     </List>
-                    <div style={{flex: 1}}></div>
+                    <div className={classes.Content}>
+                        <ProfilePicture />
+                    </div>
                 </Flex>
             </Wrapper>
         );
