@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Wrapper, Flex } from '../styled-components';
 import OptionsList from './OptionsList';
-import ProfilePicture from './ProfilePicture';
+import ContentList from './ContentList'
 
 const Content = styled.div`
     flex: 1;
@@ -24,7 +24,7 @@ class Options extends Component {
                 <Flex>
                     <OptionsList selected={this.state.selected} select={this.setSelected} />
                     <Content>
-                        <ProfilePicture />
+                        <ContentList selected={this.state.selected} />
                     </Content>
                 </Flex>
             </Wrapper>
