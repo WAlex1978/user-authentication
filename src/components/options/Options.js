@@ -16,13 +16,14 @@ const styles = () => ({
         marginTop: "30px",
     },
     classList: {
+        borderRight: "3px solid rgb(200, 200, 200)",
         "&:hover": {
-            backgroundColor: "rgb(254, 174, 186)",
+            backgroundColor: "white !important"
         }
     },
     Selected: {
-        backgroundColor: "rgb(254, 74, 86) !important",
-        color: "white",
+        borderRight: "3px solid rgb(254, 74, 86) !important",
+        backgroundColor: "white !important",
     }
 });
 
