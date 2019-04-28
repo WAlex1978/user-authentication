@@ -1,72 +1,35 @@
 import React, { Component } from 'react';
-import { Wrapper, Flex, Text } from '../styled-components';
+import styled from 'styled-components';
+import { Wrapper, Flex } from '../styled-components';
+import OptionsList from './OptionsList';
 import ProfilePicture from './ProfilePicture';
-import PropTypes from 'prop-types';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { withStyles } from '@material-ui/core/styles';
 
-const styles = () => ({
-    Content: {
-        flex: 1,
-        margin: "30px 0 0 20px",
-    },
-    List: {
-        width: "20%",
-        marginTop: "30px",
-    },
-    classList: {
-        borderRight: "3px solid rgb(200, 200, 200)",
-        "&:hover": {
-            backgroundColor: "white !important"
-        }
-    },
-    Selected: {
-        borderRight: "3px solid rgb(254, 74, 86) !important",
-        backgroundColor: "white !important",
-    }
-});
+const Content = styled.div`
+    flex: 1;
+    margin: 30px 0 0 20px;
+`
 
 class Options extends Component {
     state = {
         selected: 0,
     }
 
-    handleClick = (index) => {
-        this.setState({selected: index});
+    setSelected = (i) => {
+        this.setState({selected: i});
     }
     
     render() { 
-        const { classes } = this.props;
-
         return (
             <Wrapper>
                 <Flex>
-                    <List className={classes.List}>
-                        <ListItem button selected={this.state.selected===0} onClick={() => this.handleClick(0)} className={classes.classList} classes={{selected: classes.Selected}}>
-                            <Text color="inherit">User Settings</Text>
-                        </ListItem>
-                        <ListItem button selected={this.state.selected===1} onClick={() => this.handleClick(1)} className={classes.classList} classes={{selected: classes.Selected}}>
-                            <Text color="inherit">Profile Settings</Text>
-                        </ListItem>
-                        <ListItem button selected={this.state.selected===2} onClick={() => this.handleClick(2)} className={classes.classList} classes={{selected: classes.Selected}}>
-                            <Text color="inherit">Profile Picture</Text>
-                        </ListItem>
-                        <ListItem button selected={this.state.selected===3} onClick={() => this.handleClick(3)} className={classes.classList} classes={{selected: classes.Selected}}>
-                            <Text color="inherit">Following</Text>
-                        </ListItem>
-                    </List>
-                    <div className={classes.Content}>
+                    <OptionsList selected={this.state.selected} select={this.setSelected} />
+                    <Content>
                         <ProfilePicture />
-                    </div>
+                    </Content>
                 </Flex>
             </Wrapper>
         );
     }
 }
-
-Options.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
  
-export default withStyles (styles) (Options);
+export default Options;
