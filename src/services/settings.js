@@ -13,5 +13,6 @@ export const uploadAvatar = async (formData, token) => {
     }
     catch (err) {
         console.log(err);
+        return err;
     }
 }

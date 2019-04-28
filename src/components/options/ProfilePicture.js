@@ -49,17 +49,17 @@ const ProfilePicture = (props) => {
 
         const res = await uploadAvatar(formData, props.token);
 
-        if (!res) {
-            setError("Server error");
+        if (res && !res.data) {
+            setError(res.message);
             return;
         }
 
-        if (res && res.data.error) {
+        if (res.data && res.data.error) {
             setError(res.data.message);
             return;
         }
 
-        if (res && res.data.url) {
+        if (res.data && res.data.url) {
             setFile(null);
             setFilename('No file chosen');
         }
