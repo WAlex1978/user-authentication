@@ -33,7 +33,7 @@ class Auth extends Component {
                 {!this.props.token ? 
                     <Fragment>
                         <Background />
-                        {this.props.history.location.pathname === '/login/' ? <LoginForm /> : <RegisterForm />}
+                        {this.props.history.location.pathname.startsWith('/login') ? <LoginForm /> : <RegisterForm />}
                     </Fragment> : 
                 null }
             </Flex>

@@ -11,6 +11,7 @@ export const login = async (username, password) => {
     }
     catch(err) {
         console.log(err);
+        return err;
     }
 }
 
@@ -25,5 +26,6 @@ export const register = async (username, password) => {
     }
     catch(err) {
         console.log(err);
+        return err;
     }
 }

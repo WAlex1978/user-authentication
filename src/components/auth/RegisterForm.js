@@ -69,8 +69,8 @@ const RegisterForm = (props) => {
         
         const res = await register(username, password);
 
-        if (!res) {
-            setError("Server error");
+        if (res && !res.data) {
+            setError(res.message);
             return;
         }
 

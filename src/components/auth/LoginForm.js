@@ -60,8 +60,8 @@ const LoginForm = (props) => {
         e.preventDefault();
         const res = await login(username, password);
 
-        if (!res) {
-            setError("Server error");
+        if (res && !res.data) {
+            setError(res.message);
             return;
         }
 
