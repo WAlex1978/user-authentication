@@ -8,14 +8,35 @@ const path = require('path');
 const dUri = new datauri();
 const dataUri = image => dUri.format(path.extname(image.name).toString(), image.data);
 
+// Update biography endpoint
+app.post('/biography', async (req, res) => {
+
+    try {
+        // Verify user JSON Web Token
+        await jwt.verify(req.headers.authentication, process.env.SECRET_PW);
+
+        // Decode JSON Web Token, extract username
+        // Find user to update user location
+        const username = jwt.decode(req.headers.authentication);
+        const data = await User.updateOne(
+            {username: username.username},
+            {biography: req.body.biography}
+        );
+
+        res.send(data);
+    }
+    catch (err) {
+        console.log(err);
+        res.send({error: true, message: err.message.toString()});
+    }
+})
+
 // Upload avatar endpoint
 app.post('/avatar', async (req, res) => {
     try {
 
         // Verify user JSON Web Token
-        if (!await jwt.verify(req.headers.authentication, process.env.SECRET_PW)) {
-            throw new Error ("Invalid credentials");
-        }
+        await jwt.verify(req.headers.authentication, process.env.SECRET_PW)
 
         // Verify image exists
         if (!req.files || !req.files.image) {
@@ -47,7 +68,7 @@ app.post('/avatar', async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        res.status({error: true, message: err.message.toString()});
+        res.send({error: true, message: err.message.toString()});
     }
 });
 
