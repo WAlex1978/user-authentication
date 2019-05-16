@@ -1,10 +1,11 @@
 import React from 'react';
+import UserSettings from './UserSettings';
 import ProfilePicture from './ProfilePicture';
 
 const ContentList = (props) => {
     switch (props.selected) {
         case 0: 
-            return null;
+            return <UserSettings />;
 
         case 1: 
             return null;
