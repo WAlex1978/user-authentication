@@ -1,5 +1,6 @@
 import React from 'react';
 import UserSettings from './UserSettings';
+import ProfileSettings from './ProfileSettings';
 import ProfilePicture from './ProfilePicture';
 
 const ContentList = (props) => {
@@ -8,7 +9,7 @@ const ContentList = (props) => {
             return <UserSettings />;
 
         case 1: 
-            return null;
+            return <ProfileSettings />;
 
         case 2: 
             return <ProfilePicture />;
