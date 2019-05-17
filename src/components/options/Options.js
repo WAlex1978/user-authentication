@@ -50,6 +50,26 @@ class Options extends Component {
     setSelected = (i) => {
         this.setState({selected: i});
     }
+
+    // Display the selected content
+    getSelected = () => {
+        switch (this.state.selected) {
+            case 0: 
+                return <UserSettings />;
+
+            case 1: 
+                return <ProfileSettings />;
+
+            case 2: 
+                return <ProfilePicture />;
+
+            case 3: 
+                return null;
+                
+            default: 
+                return null;
+        }
+    }
     
     render() { 
         return (
