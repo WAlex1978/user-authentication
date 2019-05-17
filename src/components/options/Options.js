@@ -6,7 +6,6 @@ import decode from 'jwt-decode';
 import { Wrapper, Flex } from '../styled-components';
 import { getUser } from '../../services/user';
 import OptionsList from './OptionsList';
-import ContentList from './ContentList';
 import UserSettings from './UserSettings';
 import ProfileSettings from './ProfileSettings';
 import ProfilePicture from './ProfilePicture';
