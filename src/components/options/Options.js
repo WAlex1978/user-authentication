@@ -54,7 +54,7 @@ class Options extends Component {
                 <Flex>
                     <OptionsList selected={this.state.selected} select={this.setSelected} />
                     <Content>
-                        {this.state.user ? <ContentList selected={this.state.selected} /> : null}
+                        {this.state.user ? <ContentList selected={this.state.selected} user={this.state.user} /> : null}
                     </Content>
                 </Flex>
             </Wrapper>
