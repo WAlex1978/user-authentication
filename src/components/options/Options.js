@@ -60,7 +60,7 @@ class Options extends Component {
                 return <ProfileSettings />;
 
             case 2: 
-                return <ProfilePicture />;
+                return <ProfilePicture picture={this.state.user.avatar} />;
 
             case 3: 
                 return null;
