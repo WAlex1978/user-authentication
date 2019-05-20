@@ -67,6 +67,8 @@ const ProfilePicture = (props) => {
 
     return (
         <div>
+            <Text bottom="10px">Current Picture</Text>
+            <Divider />
             <Text bottom="10px">Upload a Picture</Text>
             <Divider />
             <Text top="10px" bottom="20px" size=".9rem">Must be of jpg or png format. Maximum 400 KB filesize (image resized automatically).</Text>
