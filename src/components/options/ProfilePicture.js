@@ -69,7 +69,10 @@ const ProfilePicture = (props) => {
         <div>
             <Text bottom="10px">Current Picture</Text>
             <Divider />
-            {props.picture ? <Text top="10px" bottom="20px" size=".9rem">Remove</Text> : null}
+            {props.picture ? 
+                <Text top="10px" bottom="20px" size=".9rem">Remove</Text> : 
+                <Text top="10px" bottom="20px" size=".9rem">No Profile Picture</Text> 
+            }
             <Text top="10px" bottom="10px">Upload a Picture</Text>
             <Divider />
             <Text top="10px" bottom="20px" size=".9rem">Must be of jpg or png format. Maximum 400 KB filesize (image resized automatically).</Text>
