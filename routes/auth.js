@@ -20,6 +20,7 @@ app.post('/register', async (req, res) => {
         const user = new User({
             username: req.body.username.toLowerCase(),
             password: hash,
+            avatar: process.env.DEFAULT_AVATAR,
         });
 
         const data = await user.save();
