@@ -70,6 +70,7 @@ const ProfilePicture = (props) => {
             setFile(null);
             setFilename('No file chosen');
             setAvatar(res.data.url);
+            props.update(res.data.url);
         }
     }
 

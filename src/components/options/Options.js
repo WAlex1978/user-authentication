@@ -51,9 +51,10 @@ class Options extends Component {
     }
 
     updateAvatar = (picture) => {
-        this.setState({user: {data: {
-            avatar: picture
-        }}});
+        let user = {...this.state.user};
+        user.avatar = picture;
+        this.setState({user: user});
+        console.log(this.state.user);
     }
 
     // Display the selected content
@@ -66,7 +67,7 @@ class Options extends Component {
                 return <ProfileSettings />;
 
             case 2: 
-                return <ProfilePicture picture={this.state.user.avatar} />;
+                return <ProfilePicture picture={this.state.user.avatar} update={this.updateAvatar} />;
 
             case 3: 
                 return null;
