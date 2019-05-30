@@ -69,6 +69,7 @@ const ProfilePicture = (props) => {
         if (res.data && res.data.url) {
             setFile(null);
             setFilename('No file chosen');
+            setAvatar(res.data.url);
         }
     }
 
