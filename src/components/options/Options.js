@@ -50,6 +50,12 @@ class Options extends Component {
         this.setState({selected: i});
     }
 
+    updateAvatar = (picture) => {
+        this.setState({user: {data: {
+            avatar: picture
+        }}});
+    }
+
     // Display the selected content
     getSelected = () => {
         switch (this.state.selected) {
