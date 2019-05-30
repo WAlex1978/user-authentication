@@ -8,6 +8,12 @@ import { Text } from '../styled-components';
 import { uploadAvatar } from '../../services/settings';
 
 const styles = () => ({
+    Avatar: {
+        marginTop: "10px",
+        marginBottom: "10px",
+        height: "200px",
+        width: "200px",
+    },
     Upload: {
         margin: "5px",
         backgroundColor: "rgb(254, 74, 86)",
@@ -69,7 +75,7 @@ const ProfilePicture = (props) => {
         <div>
             <Text bottom="10px">Current Picture</Text>
             <Divider />
-            <img src={props.picture} height="200"/>
+            <img src={props.picture} className={classes.Avatar} alt="" />
             <Text top="10px" bottom="10px">Upload a Picture</Text>
             <Divider />
             <Text top="10px" bottom="20px" size=".9rem">Must be of jpg or png format. Maximum 400 KB filesize (image resized automatically).</Text>
