@@ -35,6 +35,7 @@ const styles = () => ({
 });
 
 const ProfilePicture = (props) => {
+    const [avatar, setAvatar] = useState(props.picture);
     const [file, setFile] = useState(null);
     const [filename, setFilename] = useState('No file chosen');
     const [error, setError] = useState(null);
@@ -75,7 +76,7 @@ const ProfilePicture = (props) => {
         <div>
             <Text bottom="10px">Current Picture</Text>
             <Divider />
-            <img src={props.picture} className={classes.Avatar} alt="" />
+            <img src={avatar} className={classes.Avatar} alt="" />
             <Text top="10px" bottom="10px">Upload a Picture</Text>
             <Divider />
             <Text top="10px" bottom="20px" size=".9rem">Must be of jpg or png format. Maximum 400 KB filesize (image resized automatically).</Text>
