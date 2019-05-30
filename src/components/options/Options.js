@@ -54,7 +54,6 @@ class Options extends Component {
         let user = {...this.state.user};
         user.avatar = picture;
         this.setState({user: user});
-        console.log(this.state.user);
     }
 
     // Display the selected content
