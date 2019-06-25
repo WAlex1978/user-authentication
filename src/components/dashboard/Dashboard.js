@@ -1,23 +1,31 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { Text } from '../styled-components';
 import decode from 'jwt-decode';
+import Spinner from '../Spinner';
 
 class Dashboard extends Component {
-    render() { 
+    componentWillMount = () => {
         if (!this.props.token) {
-            return (
-                <Redirect to="/login" />
-            )
-        } 
+            this.props.history.push('/login');
+        }
+    }
 
+    logOut = (e) => {
+            this.props.logOut();
+            this.props.history.push('/login');
+    }
+
+    render() { 
         return (
-            <center>
-                <Text size="1.8rem" bottom="30px">Hello {decode(this.props.token).username}</Text>
+            <div>
+                {this.props.token ? 
+                <Fragment>
+                    <Text size="1.8rem" bottom="30px" align="center">Hello {decode(this.props.token).username}</Text>
 
-                <Text>Log Out</Text>
-            </center>
+                    <Text onClick={this.logOut} align="center">Log Out</Text>
+                </Fragment> : <Spinner /> }
+            </div>
         );
     }
 }
@@ -25,5 +33,9 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     return { token: state.token }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return { logOut: () => { dispatch({ type: "LOG_OUT" }) } }
+}
  
-export default connect (mapStateToProps) (Dashboard);
+export default connect (mapStateToProps, mapDispatchToProps) (Dashboard);
