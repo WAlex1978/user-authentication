@@ -48,7 +48,7 @@ app.post('/login', async (req, res) => {
         }
 
         // Sign and distribute JSON Web Token
-        const token = await jwt.sign({username: req.body.username.toLowerCase()}, process.env.SECRET_PW);
+        const token = await jwt.sign({username: req.body.username}, process.env.SECRET_PW);
         res.send({token: token});
     }
     catch (err) {
