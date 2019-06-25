@@ -2,6 +2,8 @@
 
 Full stack application developed with React, Express, and MongoDB. Simulates simple user registration and login. Includes the use of JSON Web Tokens for authentication, and local storage to persist logged in users.
 
+[Live Preview on Heroku](https://user-authentication-walex1978.herokuapp.com)
+
 <h1>Setup</h1>
 
 Run `npm install` to install dependencies.
