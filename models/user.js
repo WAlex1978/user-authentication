@@ -11,18 +11,6 @@ const user = mongoose.Schema({
         type: String,
         required: true,
     },
-    avatar: {
-        type: String,
-    },
-    posts: [],
-    subscriptions: [],
-    subscribers: [],
-    biography: {
-        type: String,
-    },
-    location: {
-        type: String,
-    },
     date: {
         type: String,
         default: dateFormat(now, "mmmm dS, yy"),
