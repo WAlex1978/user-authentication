@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { Text } from '../styled-components';
 import decode from 'jwt-decode';
 
 class Dashboard extends Component {
@@ -13,7 +14,9 @@ class Dashboard extends Component {
 
         return (
             <center>
-                Hello {decode(this.props.token).username}
+                <Text size="1.8rem" bottom="30px">Hello {decode(this.props.token).username}</Text>
+
+                <Text>Log Out</Text>
             </center>
         );
     }
