@@ -21,9 +21,9 @@ class Dashboard extends Component {
             <div>
                 {this.props.token ? 
                 <Fragment>
-                    <Text size="1.8rem" bottom="30px" align="center">Hello {decode(this.props.token).username}</Text>
+                    <Text size="1.8rem" top="5px" bottom="10px" align="center">Welcome {decode(this.props.token).username}</Text>
 
-                    <Text onClick={this.logOut} align="center">Log Out</Text>
+                    <Text onClick={this.logOut} align="center" style={{cursor: "pointer", color: "rgb(254, 44, 66)"}}>Log Out</Text>
                 </Fragment> : <Spinner /> }
             </div>
         );
