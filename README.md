@@ -1,8 +1,6 @@
-<h1>Social Media</h1>
+<h1>User Authentication</h1>
 
-Full stack application developed with React, Express, and MongoDB. 
-
-Uses cloudinary as an image database.
+Full stack application developed with React, Express, and MongoDB. Simulates simple user registration and login. Includes the use of JSON Web Tokens for authentication, and local storage to persist logged in users.
 
 <h1>Setup</h1>
 
@@ -14,11 +12,8 @@ Create a `.env` file in the root directory and define the following variables.
 
 `DATABASE_URL:` Your MongoDB database URL
 
-`CLOUDINARY_URL:` Your Cloudinary image database URL
-
 `SECRET_PW:` Secret password for distributing and validating JSON Web Tokens
 
 <hr>
-
 
 Run `npm start` to start project.
