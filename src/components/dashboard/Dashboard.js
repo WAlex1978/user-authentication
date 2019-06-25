@@ -12,9 +12,9 @@ class Dashboard extends Component {
         } 
 
         return (
-            <div>
+            <center>
                 Hello {decode(this.props.token).username}
-            </div>
+            </center>
         );
     }
 }
