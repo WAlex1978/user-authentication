@@ -9,7 +9,7 @@ export const login = async (username, password) => {
 
         return res;
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
         return err;
     }
@@ -24,7 +24,21 @@ export const register = async (username, password) => {
 
         return res;
     }
-    catch(err) {
+    catch (err) {
+        console.log(err);
+        return err;
+    }
+}
+
+export const verify = async (token) => {
+    try {
+        const res = await axios.post('/api/auth/verify', {
+            token: token,
+        });
+
+        return res;
+    }
+    catch (err) {
         console.log(err);
         return err;
     }

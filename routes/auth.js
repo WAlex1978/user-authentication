@@ -64,7 +64,6 @@ app.post('/verify', async (req, res) => {
         res.send({error: false});
     }
     catch (err) {
-        console.log(err);
         res.send({error: true, message: err.message.toString()});
     }
 })
