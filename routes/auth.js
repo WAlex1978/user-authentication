@@ -57,5 +57,16 @@ app.post('/login', async (req, res) => {
     }
 })
 
+// JWT verification endpoint
+app.post('/verify', async (req, res) => {
+    try {
+        await jwt.verify(req.body.token, process.env.SECRET_PW)
+        res.send({error: false});
+    }
+    catch (err) {
+        console.log(err);
+        res.send({error: true, message: err.message.toString()});
+    }
+})
 
 module.exports = app;
