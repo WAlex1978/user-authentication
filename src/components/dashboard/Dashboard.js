@@ -1,12 +1,21 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import { Text } from '../styled-components';
+import { verify } from '../../services/auth';
 import decode from 'jwt-decode';
 import Spinner from '../Spinner';
 
 class Dashboard extends Component {
-    componentWillMount = () => {
-        if (!this.props.token) {
+    componentWillMount = async () => {
+        if (this.props.token) {
+            const res = await verify(this.props.token);
+            
+            if (res.data.error === true) {
+                this.logOut();
+            }
+        }
+
+        else {
             this.props.history.push('/login');
         }
     }
